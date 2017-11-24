@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_parmailya" default="compile.module.parmailya">
+  <dirname property="module.parmailya.basedir" file="${ant.file.module_parmailya}"/>
+  
+  <property name="module.jdk.home.parmailya" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.parmailya" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.parmailya" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.parmailya" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="parmailya.output.dir" value="${module.parmailya.basedir}/out/production/Parmailya"/>
+  <property name="parmailya.testoutput.dir" value="${module.parmailya.basedir}/out/test/Parmailya"/>
+  
+  <path id="parmailya.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="parmailya.module.production.classpath">
+    <path refid="${module.jdk.classpath.parmailya}"/>
+  </path>
+  
+  <path id="parmailya.runtime.production.module.classpath">
+    <pathelement location="${parmailya.output.dir}"/>
+  </path>
+  
+  <path id="parmailya.module.classpath">
+    <path refid="${module.jdk.classpath.parmailya}"/>
+    <pathelement location="${parmailya.output.dir}"/>
+  </path>
+  
+  <path id="parmailya.runtime.module.classpath">
+    <pathelement location="${parmailya.testoutput.dir}"/>
+    <pathelement location="${parmailya.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.parmailya">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.parmailya">
+    <patternset refid="excluded.from.module.parmailya"/>
+  </patternset>
+  
+  <path id="parmailya.module.sourcepath">
+    <dirset dir="${module.parmailya.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.parmailya" depends="compile.module.parmailya.production,compile.module.parmailya.tests" description="Compile module Parmailya"/>
+  
+  <target name="compile.module.parmailya.production" depends="register.custom.compilers" description="Compile module Parmailya; production classes">
+    <mkdir dir="${parmailya.output.dir}"/>
+    <javac2 destdir="${parmailya.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.parmailya}/javac">
+      <compilerarg line="${compiler.args.parmailya}"/>
+      <bootclasspath refid="parmailya.module.bootclasspath"/>
+      <classpath refid="parmailya.module.production.classpath"/>
+      <src refid="parmailya.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.parmailya"/>
+    </javac2>
+    
+    <copy todir="${parmailya.output.dir}">
+      <fileset dir="${module.parmailya.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.parmailya.tests" depends="register.custom.compilers,compile.module.parmailya.production" description="compile module Parmailya; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.parmailya" description="cleanup module">
+    <delete dir="${parmailya.output.dir}"/>
+    <delete dir="${parmailya.testoutput.dir}"/>
+  </target>
+</project>

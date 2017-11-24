@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Cinzel Regular';
+    src: url('fonts/Cinzel/Cinzel-Regular.ttf');
+}
+
+.loginTitle {
+    -fx-font-family: 'Cinzel Regular';
+    -fx-font-size: 20;
+}
