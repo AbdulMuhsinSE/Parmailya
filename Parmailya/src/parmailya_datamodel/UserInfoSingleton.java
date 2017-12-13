@@ -57,4 +57,8 @@ public class UserInfoSingleton {
     public boolean hasGames() {
         return !gamesList.isEmpty();
     }
+
+    public void destroySession() {
+        instance = new UserInfoSingleton();
+    }
 }
