@@ -11,6 +11,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
+Java JDK, JavaFX, ControlsFX, Mysql-connector-java-*.bin, MySQL
+
 ```
 Give examples
 ```
@@ -18,6 +20,13 @@ Give examples
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
+
+Run the parmailya_create.sql script.
+```
+```
+Load the project into your favorite IDE & run it.
+```
+```
 
 Say what the step will be
 
@@ -55,13 +64,14 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Make sure that you have the required libraries included into your project and just click run.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [JavaFX](http://www.oracle.com/technetwork/java/javase/overview/javafx-overview-2158620.html) - The GUI Framework Used
+* [MySql](https://www.mysql.com/) - Database
+* [ControlsFX](http://fxexperience.com/controlsfx/) - Fancy prebuilt JavaFX configurations
+* [Oracle Java9](http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html) - Used as the SDK to compile the project
 
 ## Contributing
 
@@ -69,7 +79,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+Single version so far. Will update if this changes
 
 ## Authors
 
@@ -79,7 +89,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
